@@ -1,4 +1,5 @@
 // 1 - HELPERS
+@import "./tailwind.css";
 @import "./1-helpers/variables";
 @import "./1-helpers/reset";
 @import "./1-helpers/mixins";
@@ -10,3 +11,9 @@
 @import "./2-basics/buttons";
 
 // 3 - LAYOUT
+@import "./3-layouts/nav";
+@import "./3-layouts/home";
+
+body {
+  background-color: $secondary;
+}

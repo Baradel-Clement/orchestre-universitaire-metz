@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/index.scss";
+import Image from "next/image";
+import logo from "../../public/assets/logo.jpg";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +16,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
+        <nav>
+          <p>Orchestre musicale de metz</p>
+          <Image src={logo} alt="Orchestre universitaire de metz" />
+        </nav>
         {children}
       </body>
     </html>

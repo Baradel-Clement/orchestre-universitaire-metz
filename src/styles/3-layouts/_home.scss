@@ -1,0 +1,30 @@
+.Home {
+  width: 100%;
+  @extend %flex-start-center;
+  flex-direction: column;
+
+  & > img {
+    width: 100%;
+    height: auto;
+  }
+
+  .join-us {
+    width: 90%;
+    background-color: $primary;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 20px;
+    @extend %flex-start-center;
+    flex-direction: column;
+
+    & > .header {
+      @extend %flex-start-center;
+      flex-direction: column;
+      text-align: center;
+
+      & > h2 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
