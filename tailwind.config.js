@@ -11,7 +11,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      background: "#e2e8f0",
+      background: "#eee8d8",
+      primary: "#b56d3e",
+      secondary: "#eee8d8",
+      primary2: "#ffe1c3",
     },
     extend: {
       borderRadius: {

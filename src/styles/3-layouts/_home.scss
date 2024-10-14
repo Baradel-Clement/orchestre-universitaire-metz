@@ -11,20 +11,30 @@
   .join-us {
     width: 90%;
     background-color: $primary;
-    padding: 20px;
     margin-top: 40px;
     border-radius: 20px;
     @extend %flex-start-center;
     flex-direction: column;
 
+    & > img {
+      border-radius: 20px 20px 0px 0px;
+    }
+
     & > .header {
       @extend %flex-start-center;
       flex-direction: column;
       text-align: center;
+      padding: 20px;
 
       & > h2 {
         margin-bottom: 10px;
       }
+    }
+
+    & > form {
+      margin-top: 20px;
+      padding: 20px;
+      width: 80%;
     }
   }
 }

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import orchestre from "../../public/assets/orchestre.jpg";
+import contactIllu from "../../public/assets/contact-illu.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -74,6 +75,7 @@ export default function Home() {
       <Image src={orchestre} alt="orchestre" />
 
       <div className="join-us">
+        <Image src={contactIllu} alt="orchestre" />
         <div className="header">
           <h2 className="primary2 XL">Rejoins-nous !</h2>
           <p>
