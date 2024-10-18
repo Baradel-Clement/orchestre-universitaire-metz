@@ -22,9 +22,9 @@ export default function RootLayout({
           <Image src={logo} alt="Orchestre universitaire de metz" />
         </nav>
         {children}
+        <Footer />
       </body>
       
-      <Footer />
     </html>
   );
 }

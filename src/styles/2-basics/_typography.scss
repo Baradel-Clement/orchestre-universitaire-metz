@@ -1,12 +1,14 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&display=swap"); */
+@font-face {
+  font-family: "Bookman";
+  src: local("/public/fonts/Bookman/bookmanoldstyle.ttf") format("truetype");
+}
 
 body,
 button,
 input,
 textarea {
-  /* font-family: "Marhey", sans-serif !important; */
+  font-family: "Bookman";
   font-weight: 400;
-  /* color: $white; */
   font-style: normal;
 }
 .bold {

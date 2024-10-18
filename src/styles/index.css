@@ -200,7 +200,18 @@ label {
 }
 
 @media screen and (min-width: 200px) {
-  .Home, .Home .join-us, .Home .join-us > .header {
+  footer .footer-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .Home, .Home .join-us, .Home .join-us > .header, footer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -217,14 +228,17 @@ label {
   }
 }
 
-/* @import url("https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&display=swap"); */
+@font-face {
+  font-family: "Bookman";
+  src: local("/public/fonts/Bookman/bookmanoldstyle.ttf") format("truetype");
+}
+
 body,
 button,
 input,
 textarea {
-  /* font-family: "Marhey", sans-serif !important; */
+  font-family: "Bookman";
   font-weight: 400;
-  /* color: $white; */
   font-style: normal;
 }
 
@@ -315,7 +329,6 @@ nav > img {
 .Home .join-us {
   width: 90%;
   background-color: #B56D3E;
-  padding: 20px;
   margin-top: 40px;
   border-radius: 20px;
   -webkit-box-orient: vertical;
@@ -324,16 +337,47 @@ nav > img {
           flex-direction: column;
 }
 
+.Home .join-us > img {
+  border-radius: 20px 20px 0px 0px;
+}
+
 .Home .join-us > .header {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: center;
+  padding: 20px;
 }
 
 .Home .join-us > .header > h2 {
   margin-bottom: 10px;
+}
+
+.Home .join-us > form {
+  margin-top: 20px;
+  padding: 20px;
+  width: 80%;
+}
+
+footer {
+  width: 100%;
+  background-color: #B56D3E;
+  margin-top: 100px;
+  padding: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+footer .footer-links {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 body {

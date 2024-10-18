@@ -1,6 +1,14 @@
 footer {
   width: 100%;
   background-color: $primary;
-  height: 200px;
   margin-top: 100px;
+  padding: 20px;
+  @extend %flex-start-center;
+  flex-flow: column;
+  .footer-links {
+    @extend %flex-between-center;
+    flex-flow: column;
+    height: 40px;
+    margin-bottom: 20px;
+  }
 }
