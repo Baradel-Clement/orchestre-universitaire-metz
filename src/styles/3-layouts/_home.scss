@@ -5,7 +5,10 @@
 
   & > img {
     width: 100%;
-    height: auto;
+    max-height: 300px;
+    max-width: 1200px;
+    object-fit: cover;
+    object-position: center;
   }
 
   .join-us {
@@ -16,25 +19,93 @@
     @extend %flex-start-center;
     flex-direction: column;
 
-    & > img {
-      border-radius: 20px 20px 0px 0px;
-    }
-
-    & > .header {
+    & > .join-us-content {
       @extend %flex-start-center;
       flex-direction: column;
-      text-align: center;
-      padding: 20px;
+      & > img {
+        border-radius: 20px 20px 0px 0px;
+      }
 
-      & > h2 {
-        margin-bottom: 10px;
+      & > .header {
+        @extend %flex-start-center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+
+        & > h2 {
+          margin-bottom: 10px;
+        }
+      }
+
+      & > form {
+        margin-top: 20px;
+        padding: 20px;
+        width: 80%;
+        @extend %flex-start-center;
+        flex-flow: column;
+
+        * {
+          width: 100%;
+          max-width: 600px;
+        }
+
+        input[type=submit] {
+          background-color: $primary2;
+          display: none;
+        }
       }
     }
+  }
 
-    & > form {
-      margin-top: 20px;
-      padding: 20px;
-      width: 80%;
+  .cta-portfolio {
+    margin-top: 40px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: $primary2;
+    @extend %drop-shadow;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .Home {
+    .join-us {
+      width: 90%;
+      background-color: $primary;
+      margin-top: 50px;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 40px;
+      max-width: 1200px;
+
+      & > img {
+        border-radius: 0px 0px;
+        height: 100%;
+        max-width: 40%;
+      }
+
+      & > .join-us-content {
+        max-width: 56%;
+        & > .header {
+          flex-direction: column;
+          text-align: center;
+          padding: 20px;
+
+          & > h2 {
+            margin-bottom: 10px;
+          }
+        }
+
+        & > form {
+          margin-top: 20px;
+          padding: 20px;
+          width: 80%;
+
+          * {
+            width: 100%;
+            max-width: 600px;
+          }
+        }
+      }
     }
   }
 }

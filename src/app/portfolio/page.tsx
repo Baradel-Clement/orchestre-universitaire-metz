@@ -83,7 +83,7 @@ export default function Portfolio() {
   const [index, setIndex] = useState(-1);
   return (
     <section className="Portfolio">
-      <h1>Portfolio</h1>
+      <h2>Portfolio</h2>
       <h2>Un aperçu de nos répétitions et concerts !</h2>
       <RowsPhotoAlbum
         photos={photos}

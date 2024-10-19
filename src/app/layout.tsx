@@ -18,13 +18,14 @@ export default function RootLayout({
     <html lang="fr">
       <body>
         <nav>
-          <p>Orchestre musicale de metz</p>
-          <Image src={logo} alt="Orchestre universitaire de metz" />
+          <div>
+            <h1>Orchestre musicale de metz</h1>
+            <Image src={logo} alt="Orchestre universitaire de metz" />
+          </div>
         </nav>
         {children}
         <Footer />
       </body>
-      
     </html>
   );
 }

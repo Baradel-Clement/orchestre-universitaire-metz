@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import orchestre from "../../public/assets/orchestre.jpg";
+import orchestre from "../../public/assets/portfolio/8.jpg";
 import contactIllu from "../../public/assets/contact-illu.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,6 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { sendEmail } from "@/utils/sendEmail";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const formSchema = z.object({
   first_name: z.string(),
@@ -76,96 +77,100 @@ export default function Home() {
 
       <div className="join-us">
         <Image src={contactIllu} alt="orchestre" />
-        <div className="header">
-          <h2 className="primary2 XL">Rejoins-nous !</h2>
-          <p>
-            L&apos;orchestre Universitaire de Metz est un lieu où les talents
-            musicaux se rencontrent pour créer des harmonies uniques. Nous
-            accueillons avec enthousiasme des musiciens de tous niveaux et de
-            tous horizons. Rejoins-nous pour vivre une expérience musicale
-            enrichissante et conviviale ! N&apos;hésite pas à nous contacter par
-            mail ou directement sur instagram.
-          </p>
+        <div className="join-us-content">
+          <div className="header">
+            <h2 className="primary2 XL">Rejoins-nous !</h2>
+            <p>
+              L&apos;orchestre Universitaire de Metz est un lieu où les talents
+              musicaux se rencontrent pour créer des harmonies uniques. Nous
+              accueillons avec enthousiasme des musiciens de tous niveaux et de
+              tous horizons. Rejoins-nous pour vivre une expérience musicale
+              enrichissante et conviviale ! N&apos;hésite pas à nous contacter
+              par mail ou directement sur instagram.
+            </p>
+          </div>
+          <h2 className="primary2 XL">Contactez-nous</h2>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <div>
+                <FormField
+                  control={form.control}
+                  name="first_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Prénom</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Prénom" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="last_name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nom</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Nom" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        required
+                        placeholder="Email"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Bio</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Votre message..."
+                        className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+
+              {!isLoading && <Button type="submit">Envoyer</Button>}
+              {isLoading && (
+                <ReactLoading
+                  type={"spin"}
+                  color={"blue"}
+                  height={66}
+                  width={37}
+                />
+              )}
+            </form>
+          </Form>
         </div>
-        <h2 className="primary2 XL">Contactez-nous</h2>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div>
-              <FormField
-                control={form.control}
-                name="first_name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Prénom</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Prénom" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="last_name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nom</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Nom" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      required
-                      placeholder="Email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Bio</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Votre message..."
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            {!isLoading && <Button type="submit">Envoyer</Button>}
-            {isLoading && (
-              <ReactLoading
-                type={"spin"}
-                color={"blue"}
-                height={66}
-                width={37}
-              />
-            )}
-          </form>
-        </Form>
       </div>
+
+      <Link href='/portfolio' className="inknut cta-portfolio">L&apos;OUM en image →</Link>
     </section>
   );
 }

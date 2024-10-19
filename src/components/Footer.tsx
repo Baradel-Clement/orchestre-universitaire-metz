@@ -8,8 +8,12 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-links">
-        <Link href="/">Accueil</Link>
-        <Link href="/portfolio">Portfolio</Link>
+        <Link className="inknut" href="/">
+          Accueil
+        </Link>
+        <Link className="inknut" href="/portfolio">
+          Portfolio
+        </Link>
       </div>
       <div className="footer-socials">
         <Link

@@ -211,7 +211,7 @@ label {
         -ms-flex-align: center;
             align-items: center;
   }
-  .Home, .Home .join-us, .Home .join-us > .header, footer {
+  .Home, .Home .join-us, .Home .join-us > .join-us-content, .Home .join-us > .join-us-content > .header, .Home .join-us > .join-us-content > form, footer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -222,22 +222,157 @@ label {
         -ms-flex-align: center;
             align-items: center;
   }
-  .drop-shadow {
+  .drop-shadow, .Home .cta-portfolio {
     -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.7);
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.7);
   }
 }
 
 @font-face {
-  font-family: "Bookman";
-  src: local("/public/fonts/Bookman/bookmanoldstyle.ttf") format("truetype");
+  font-family: "Niconne";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/niconne/v15/w8gaH2QvRug1_rTfnQyn2Q.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQDmil5tffhpBrklhGNaJaivQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQDmil5tffhpBrklnWOaJaivQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQGmil5tffhpBrknt6sfQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQDmil5tffhpBrkli2PaJaivQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQDmil5tffhpBrklgGIaJaivQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Maitree";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/maitree/v10/MjQDmil5tffhpBrklmWJaJaivQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU2vwoj-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GSYax7VC4ot_qNB4nYpBdaKUUE4J0.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU33w4j-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU3bxIj-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU2_xYj-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU2jxoj-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inknut Antiqua";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inknutantiqua/v14/Y4GRYax7VC4ot_qNB4nYpBdaKU2Hx4j-Zhs.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 body,
 button,
 input,
 textarea {
-  font-family: "Bookman";
+  font-family: "Maitree", serif !important;
+  font-weight: 500;
+  font-style: normal;
+}
+
+h1,
+.niconne {
+  font-family: "Niconne", cursive !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2,
+.inknut {
+  font-family: "Inknut Antiqua", serif !important;
   font-weight: 400;
   font-style: normal;
 }
@@ -301,16 +436,35 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-nav > img {
+nav > div {
+  max-width: 1200px;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav > div > img {
   width: 50px;
   height: 50px;
+}
+
+nav > div > h1 {
+  font-size: 30px;
 }
 
 .Home {
@@ -323,7 +477,12 @@ nav > img {
 
 .Home > img {
   width: 100%;
-  height: auto;
+  max-height: 300px;
+  max-width: 1200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .Home .join-us {
@@ -337,11 +496,18 @@ nav > img {
           flex-direction: column;
 }
 
-.Home .join-us > img {
+.Home .join-us > .join-us-content {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Home .join-us > .join-us-content > img {
   border-radius: 20px 20px 0px 0px;
 }
 
-.Home .join-us > .header {
+.Home .join-us > .join-us-content > .header {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -350,14 +516,80 @@ nav > img {
   padding: 20px;
 }
 
-.Home .join-us > .header > h2 {
+.Home .join-us > .join-us-content > .header > h2 {
   margin-bottom: 10px;
 }
 
-.Home .join-us > form {
+.Home .join-us > .join-us-content > form {
   margin-top: 20px;
   padding: 20px;
   width: 80%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.Home .join-us > .join-us-content > form * {
+  width: 100%;
+  max-width: 600px;
+}
+
+.Home .join-us > .join-us-content > form input[type=submit] {
+  background-color: #ffe1c3;
+  display: none;
+}
+
+.Home .cta-portfolio {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ffe1c3;
+}
+
+@media screen and (min-width: 1200px) {
+  .Home .join-us {
+    width: 90%;
+    background-color: #B56D3E;
+    margin-top: 50px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 40px;
+    max-width: 1200px;
+  }
+  .Home .join-us > img {
+    border-radius: 0px 0px;
+    height: 100%;
+    max-width: 40%;
+  }
+  .Home .join-us > .join-us-content {
+    max-width: 56%;
+  }
+  .Home .join-us > .join-us-content > .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .Home .join-us > .join-us-content > .header > h2 {
+    margin-bottom: 10px;
+  }
+  .Home .join-us > .join-us-content > form {
+    margin-top: 20px;
+    padding: 20px;
+    width: 80%;
+  }
+  .Home .join-us > .join-us-content > form * {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 footer {
