@@ -83,8 +83,9 @@ export default function Portfolio() {
   const [index, setIndex] = useState(-1);
   return (
     <section className="Portfolio">
-      <h2>Portfolio</h2>
-      <h2>Un aperçu de nos répétitions et concerts !</h2>
+      <h2 className="text-3xl my-6 text-center font-light text-[#B56D3E]">
+        Prochains Évenements
+      </h2>
       <RowsPhotoAlbum
         photos={photos}
         render={{ image: renderNextImage }}

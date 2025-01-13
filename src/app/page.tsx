@@ -1,176 +1,53 @@
 "use client";
-
+import { Music4 } from "lucide-react";
 import Image from "next/image";
-import orchestre from "../../public/assets/portfolio/8.jpg";
-import contactIllu from "../../public/assets/contact-illu.png";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import ReactLoading from "react-loading";
-
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { sendEmail } from "@/utils/sendEmail";
-import toast from "react-hot-toast";
+import orchestre from "../../public/assets/portfolio/6.jpg";
 import Link from "next/link";
 
-const formSchema = z.object({
-  first_name: z.string(),
-  last_name: z.string(),
-  email: z.string().email(),
-  message: z.string(),
-});
-
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  const onSubmit = async () => {
-    try {
-      setIsLoading(true);
-      await sendEmail(form.getValues());
-      notify();
-    } catch {
-      notifyError();
-    } finally {
-      setIsLoading(false);
-      /* setValues({
-        firstName: "",
-        lastName: "",
-        num: "",
-        message: "",
-        email: "",
-      }); */
-    }
-  };
-
-  const notify = () =>
-    toast.success(
-      `Votre message a bien été envoyé et vous recevrez un accusé de réception à l’adresse : ${form.getValues(
-        "email"
-      )}`,
-      { duration: 6000 }
-    );
-  const notifyError = () =>
-    toast.error("Erreur. Veuillez réessayer.", { duration: 6000 });
   return (
     <section className="Home">
       <Image src={orchestre} alt="orchestre" />
+      <section className="px-6 py-12 sm:px-12 md:px-16 bg-[#B56D3E] rounded-2xl mt-8 flex flex-col">
+        <div className="text-center space-y-8 flex flex-col gap-6 items-center">
+          <div className="flex items-center justify-center gap-3">
+            <Music4 className="h-8 w-8 text-[#ffe1c3]" />
+            <h1 className="text-4xl sm:text-5xl font-light text-[#ffe1c3]">
+              L&apos;OUM
+            </h1>
+          </div>
 
-      <div className="join-us">
-        <Image src={contactIllu} alt="orchestre" />
-        <div className="join-us-content">
-          <div className="header">
-            <h2 className="primary2 XL">Rejoins-nous !</h2>
-            <p>
-              L&apos;orchestre Universitaire de Metz est un lieu où les talents
-              musicaux se rencontrent pour créer des harmonies uniques. Nous
-              accueillons avec enthousiasme des musiciens de tous niveaux et de
-              tous horizons. Rejoins-nous pour vivre une expérience musicale
-              enrichissante et conviviale ! N&apos;hésite pas à nous contacter
-              par mail ou directement sur instagram.
+          <div className="space-y-4 text-gray-600 max-w-2xl mx-auto">
+            <p className="leading-relaxed text-sm sm:text-base">
+              L&apos;Orchestre Universitaire de Metz a été créé en décembre 2023
+              dans le but de créer des liens entre les étudiants de différents
+              départements d&apos;études, autour d&apos;une passion commune, la
+              musique.
+            </p>
+
+            <p className="leading-relaxed text-sm sm:text-base">
+              Dès sa création, l&apos;orchestre comptait une vingtaine de
+              musiciens et ne cesse depuis de croître. Que ce soit des vents,
+              des percussions ou des cordes, les différentes familles
+              d&apos;instruments sont représentées et permettent de jouer des
+              morceaux variés.
             </p>
           </div>
-          <h2 className="primary2 XL">Contactez-nous</h2>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div>
-                <FormField
-                  control={form.control}
-                  name="first_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Prénom</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Prénom" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="last_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nom</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Nom" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        required
-                        placeholder="Email"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
 
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Bio</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Votre message..."
-                        className="resize-none"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-
-              {!isLoading && <Button type="submit">Envoyer</Button>}
-              {isLoading && (
-                <ReactLoading
-                  type={"spin"}
-                  color={"blue"}
-                  height={66}
-                  width={37}
-                />
-              )}
-            </form>
-          </Form>
+          <Link
+            href="/contact"
+            className="px-6 sm:px-8 py-3 bg-[#ffe1c3] text-white rounded-full hover:bg-[#B89587] transition-colors duration-300 font-medium text-sm sm:text-base w-auto"
+          >
+            Rejoins-nous !
+          </Link>
         </div>
-      </div>
-
-      <Link href='/portfolio' className="inknut cta-portfolio">L&apos;OUM en image →</Link>
+      </section>
+      <Link
+        href="/portfolio"
+        className="mt-8 px-6 sm:px-8 py-3 bg-[#B56D3E] text-white rounded-full hover:bg-[#B89587] transition-colors duration-300 font-medium text-sm sm:text-base drop-shadow-2xl underline"
+      >
+        L&apos;OUM en image →
+      </Link>
     </section>
   );
 }
