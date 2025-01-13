@@ -2,7 +2,18 @@ import { Calendar, Clock, MapPin } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-export const events = [
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  address: string;
+  image: string;
+  program: string;
+}
+
+const events: Event[] = [
   {
     id: 1,
     title: "Concert dans l'église Saint-Joseph",
@@ -34,7 +45,7 @@ export const events = [
     address: "3 Avenue Ney, 57000 Metz",
     image:
       "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=2340&auto=format&fit=crop",
-    program: "Vivaldi - Les Quatre Saisons",
+    program: "Vivaldi - Les Quatre Saisons, Debussy - Clair de Lune",
   },
 ];
 
