@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { resend } from "../../../lib/resend";
-import { NextApiRequest } from "next";
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextRequest) {
+  const { first_name, last_name, message, email } = await req.json();
   if (req.method === "POST") {
     const date = new Date();
     const months = [
@@ -22,20 +22,20 @@ export async function POST(req: NextApiRequest) {
     console.log(req.body);
     const mailToOrchestre = await resend.emails.send({
       from:
-        req.body.first_name !== "" && req.body.last_name !== ""
-          ? `${req.body.first_name} ${req.body.last_name} <contact@orchestre-universitaire-metz.fr>`
+        first_name !== "" && last_name !== ""
+          ? `${first_name} ${last_name} <contact@orchestre-universitaire-metz.fr>`
           : "contact@orchestre-universitaire-metz.fr",
       to: ["contact@orchestre-universitaire-metz.fr"], // contact@orchestre-universitaire-metz.fr
-      subject: `Message de ${req.body.first_name} ${
-        req.body.last_name
+      subject: `Message de ${first_name} ${
+        last_name
       } en date du ${new Date().getDate()} ${
         months[new Date().getMonth()]
       } ${new Date().getFullYear()}`,
-      html: `Nom : ${req.body.last_name}<br />
-      Prénom : ${req.body.first_name}<br />
-      Email : ${req.body.email}<br />
+      html: `Nom : ${last_name}<br />
+      Prénom : ${first_name}<br />
+      Email : ${email}<br />
       Message : <br /> <br />
-      ${req.body.message}`,
+      ${message}`,
     });
 
     if (mailToOrchestre.error) {
@@ -47,14 +47,14 @@ export async function POST(req: NextApiRequest) {
 
     const mailToClient = await resend.emails.send({
       from: "Orchestre Universitaire de Metz <ne-pas-repondre@orchestre-universitaire-metz.fr>",
-      to: [req.body.email],
+      to: [email],
       subject: "L'orchestre universitaire de Metz a bien reçu votre message",
-      html: `Bonjour ${req.body.first_name},<br /><br />
+      html: `Bonjour ${first_name},<br /><br />
   
       
       Vous nous avez adressé le message ci-dessous via notre formulaire de contact : <br /><br />
       
-      ${req.body.message}<br /> <br />
+      ${message}<br /> <br />
       
       L'OUM a pris en compte votre demande et vous remercie. Notre équipe met tout en œuvre pour y répondre avant le ${datePlus3.getDate()} ${
         months[datePlus3.getMonth()]
