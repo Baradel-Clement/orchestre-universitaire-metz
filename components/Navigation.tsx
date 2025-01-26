@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/assets/logo.jpg"; // Assurez-vous que le chemin est correct
+import logo from "../public/assets/logo.jpg"; // Assurez-vous que le chemin est correct
 
 const Navigation = () => {
   return (
@@ -9,7 +9,7 @@ const Navigation = () => {
         <div>
           <h1 className="md:text-3xl text-2xl">Orchestre Universitaire de Metz</h1>
         </div>
-        <ul className="flex space-x-4 mx-auto">
+        <ul className="flex flex-col sm:flex-row sm:space-x-4 text-center space-y-2 sm:space-y-0 sm:text-left mx-auto">
           <li>
             <Link href="/">Accueil</Link>
           </li>

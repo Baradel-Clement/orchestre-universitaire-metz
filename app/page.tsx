@@ -1,7 +1,7 @@
 "use client";
 import { Music4 } from "lucide-react";
 import Image from "next/image";
-import orchestre from "../../public/assets/portfolio/6.jpg";
+import orchestre from "../public/assets/portfolio/6.jpg";
 import Link from "next/link";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
 
           <div className="space-y-4 text-gray-600 max-w-2xl mx-auto">
             <p className="leading-relaxed text-sm sm:text-base">
-              L&apos;Orchestre Universitaire de Metz a été créé en décembre 2023
+              L&apos;Orchestre Universitaire de Metz a été fondé en décembre 2023
               dans le but de créer des liens entre les étudiants de différents
               départements d&apos;études, autour d&apos;une passion commune, la
               musique.
@@ -46,7 +46,7 @@ export default function Home() {
         href="/portfolio"
         className="mt-8 px-6 sm:px-8 py-3 bg-[#B56D3E] text-white rounded-full hover:bg-[#B89587] transition-colors duration-300 font-medium text-sm sm:text-base drop-shadow-2xl underline"
       >
-        L&apos;OUM en image →
+        L&apos;OUM en images →
       </Link>
     </section>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/index.scss";
-import Footer from "@/components/Footer";
-import Navigation from "@/components/Navigation";
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
 
 export const metadata: Metadata = {
   title: "Orchestre Universitaire de Metz",

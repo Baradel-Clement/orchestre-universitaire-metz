@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import insta from "../../public/assets/InstagramLogo.png";
+import insta from "../public/assets/InstagramLogo.png";
 import Image from "next/image";
 
 const Footer = () => {

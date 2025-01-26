@@ -1,10 +1,8 @@
-import { resend } from "@/lib/resend";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
+import { resend } from "../../../lib/resend";
+import { NextApiRequest } from "next";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function POST(req: NextApiRequest) {
   if (req.method === "POST") {
     const date = new Date();
     const months = [
@@ -25,9 +23,9 @@ export default async function handler(
     const mailToOrchestre = await resend.emails.send({
       from:
         req.body.first_name !== "" && req.body.last_name !== ""
-          ? `${req.body.first_name} ${req.body.last_name} <baradelclement@gmail.com>`
-          : "baradelclement@gmail.com",
-      to: ["baradelclement@gmail.com"], // baradelclement@gmail.com
+          ? `${req.body.first_name} ${req.body.last_name} <contact@orchestre-universitaire-metz.fr>`
+          : "contact@orchestre-universitaire-metz.fr",
+      to: ["contact@orchestre-universitaire-metz.fr"], // contact@orchestre-universitaire-metz.fr
       subject: `Message de ${req.body.first_name} ${
         req.body.last_name
       } en date du ${new Date().getDate()} ${
@@ -41,14 +39,14 @@ export default async function handler(
     });
 
     if (mailToOrchestre.error) {
-      return res.status(400).json(mailToOrchestre.error);
+      return NextResponse.json({ message: mailToOrchestre.error, status: 400 });
     }
 
     const datePlus3 = new Date(date);
     datePlus3.setDate(datePlus3.getDate() + 3);
 
     const mailToClient = await resend.emails.send({
-      from: "Orchestre Universitaire de Metz <ne-pas-repondre@gmail.com>",
+      from: "Orchestre Universitaire de Metz <ne-pas-repondre@orchestre-universitaire-metz.fr>",
       to: [req.body.email],
       subject: "L'orchestre universitaire de Metz a bien reçu votre message",
       html: `Bonjour ${req.body.first_name},<br /><br />
@@ -62,14 +60,14 @@ export default async function handler(
         months[datePlus3.getMonth()]
       }.<br /><br />
       
-      Si vous souhaitez compléter votre demande, nous vous remercions d'adresser votre message à baradelclement@gmail.com.`,
+      Si vous souhaitez compléter votre demande, nous vous remercions d'adresser votre message à contact@orchestre-universitaire-metz.fr.`,
     });
 
     if (mailToClient.error) {
-      return res.status(400).json(mailToClient.error);
+      return NextResponse.json({ message: mailToClient.error, status: 400 });
     }
-    return res.status(200).json([mailToClient.data, mailToOrchestre.data]);
+    return NextResponse.json([mailToClient.data, mailToOrchestre.data]);
   } else {
-    return res.status(200).json({ message: "Hello from Next.js!" });
+    return NextResponse.json({ message: "Hello from Next.js!", status: 200 });
   }
 }
