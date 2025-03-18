@@ -1,3 +1,5 @@
+"use client";
+
 import { Calendar, Clock, MapPin } from "lucide-react";
 import egliseImage from "../../public/assets/eglise.jpg";
 import Image from "next/image";

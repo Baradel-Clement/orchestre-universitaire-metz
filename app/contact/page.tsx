@@ -1,75 +1,51 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import ReactLoading from "react-loading";
-
-import { Button } from "../../components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form";
-import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 import { useState } from "react";
-import { sendEmail } from "../../utils/sendEmail";
+import ReactLoading from "react-loading";
 import toast from "react-hot-toast";
-import contactIllu from "../../public/assets/contact-illu.png";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-
-const formSchema = z.object({
-  first_name: z.string(),
-  last_name: z.string(),
-  email: z.string().email(),
-  message: z.string(),
-});
+import contactIllu from "../../public/assets/contact-illu.png";
+import { sendEmail } from "../../utils/sendEmail";
 
 const Contact = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      message: "",
-    },
-  });
 
-  const onSubmit = async () => {
+  const notify = () =>
+    toast.success(
+      `Votre message a bien été envoyé et vous recevrez un accusé de réception à l’adresse : ${email}`,
+      { duration: 6000 }
+    );
+
+  const notifyError = () =>
+    toast.error("Erreur. Veuillez réessayer.", { duration: 6000 });
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
       setIsLoading(true);
-      await sendEmail(form.getValues());
+      await sendEmail({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        message,
+      });
       notify();
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setMessage("");
     } catch {
       notifyError();
     } finally {
       setIsLoading(false);
-      /* setValues({
-        firstName: "",
-        lastName: "",
-        num: "",
-        message: "",
-        email: "",
-      }); */
     }
   };
 
-  const notify = () =>
-    toast.success(
-      `Votre message a bien été envoyé et vous recevrez un accusé de réception à l’adresse : ${form.getValues(
-        "email"
-      )}`,
-      { duration: 6000 }
-    );
-  const notifyError = () =>
-    toast.error("Erreur. Veuillez réessayer.", { duration: 6000 });
   return (
     <>
       <NextSeo
@@ -94,84 +70,76 @@ const Contact = () => {
                 Contactez-nous
               </h2>
             </div>
-            <Form {...form}>
-              <form
-                className="space-y-8"
-                onSubmit={form.handleSubmit(onSubmit)}
-              >
-                <FormField
-                  control={form.control}
-                  name="first_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Prénom</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Prénom" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+            <form className="space-y-8" onSubmit={onSubmit}>
+              <div>
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Prénom
+                </label>
+                <input
+                  id="firstName"
+                  placeholder="Prénom"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
-                <FormField
-                  control={form.control}
-                  name="last_name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Nom</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Nom" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+              </div>
+              <div>
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Nom
+                </label>
+                <input
+                  id="lastName"
+                  placeholder="Nom"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          required
-                          placeholder="Email"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Bio</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder="Votre message..."
-                          className="resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  placeholder="Votre message..."
+                  className="resize-none"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
-
-                {!isLoading && <Button type="submit">Envoyer</Button>}
-                {isLoading && (
-                  <ReactLoading
-                    type={"spin"}
-                    color={"blue"}
-                    height={66}
-                    width={37}
-                  />
-                )}
-              </form>
-            </Form>
+              </div>
+              {!isLoading && <button type="submit">Envoyer</button>}
+              {isLoading && (
+                <ReactLoading
+                  type={"spin"}
+                  color={"blue"}
+                  height={66}
+                  width={37}
+                />
+              )}
+            </form>
           </div>
         </div>
       </section>
