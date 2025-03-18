@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://orchestre-universitaire-metz.fr/sitemap.xml

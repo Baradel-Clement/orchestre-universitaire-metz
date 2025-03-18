@@ -16,6 +16,7 @@ import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+import { NextSeo } from "next-seo";
 
 const photos = [
   { src: "/assets/portfolio/1.jpg", width: 1200, height: 1599 },
@@ -82,27 +83,42 @@ function renderNextImage(
 export default function Portfolio() {
   const [index, setIndex] = useState(-1);
   return (
-    <section className="Portfolio">
-      <RowsPhotoAlbum
-        photos={photos}
-        render={{ image: renderNextImage }}
-        defaultContainerWidth={1200}
-        sizes={{
-          size: "1168px",
-          sizes: [
-            { viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" },
-          ],
+    <>
+      <NextSeo
+        title="Orchestre Universitaire de Metz - Une aventure musicale étudiante"
+        description="Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !"
+        canonical="https://www.orchestre-universitaire-metz.fr/portfolio"
+        openGraph={{
+          type: "website",
+          url: "https://www.orchestre-universitaire-metz.fr/portfolio",
+          title:
+            "Orchestre Universitaire de Metz - Une aventure musicale étudiante",
+          description:
+            "Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !",
         }}
-        onClick={({ index }) => setIndex(index)}
       />
-      <Lightbox
-        slides={photos}
-        open={index >= 0}
-        index={index}
-        close={() => setIndex(-1)}
-        // enable optional lightbox plugins
-        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-      />
-    </section>
+      <section className="Portfolio">
+        <RowsPhotoAlbum
+          photos={photos}
+          render={{ image: renderNextImage }}
+          defaultContainerWidth={1200}
+          sizes={{
+            size: "1168px",
+            sizes: [
+              { viewport: "(max-width: 1200px)", size: "calc(100vw - 32px)" },
+            ],
+          }}
+          onClick={({ index }) => setIndex(index)}
+        />
+        <Lightbox
+          slides={photos}
+          open={index >= 0}
+          index={index}
+          close={() => setIndex(-1)}
+          // enable optional lightbox plugins
+          plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+        />
+      </section>
+    </>
   );
 }
