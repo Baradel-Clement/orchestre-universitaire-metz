@@ -3,24 +3,10 @@ import { Music4 } from "lucide-react";
 import Image from "next/image";
 import orchestre from "../public/assets/portfolio/6.jpg";
 import Link from "next/link";
-import { NextSeo } from "next-seo";
 
 export default function Home() {
   return (
     <>
-      <NextSeo
-        title="Orchestre Universitaire de Metz - Une aventure musicale étudiante"
-        description="Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !"
-        canonical="https://www.orchestre-universitaire-metz.fr/"
-        openGraph={{
-          type: "website",
-          url: "https://www.orchestre-universitaire-metz.fr/",
-          title:
-            "Orchestre Universitaire de Metz - Une aventure musicale étudiante",
-          description:
-            "Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !",
-        }}
-      />
       <section className="Home">
         <Image src={orchestre} alt="orchestre" />
         <section className="px-6 py-12 sm:px-12 md:px-16 bg-[#B56D3E] rounded-2xl mt-8 flex flex-col">

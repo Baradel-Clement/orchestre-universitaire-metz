@@ -4,8 +4,6 @@ import { Calendar, Clock, MapPin } from "lucide-react";
 import egliseImage from "../../public/assets/eglise.jpg";
 import Image from "next/image";
 import React from "react";
-import { NextSeo } from "next-seo";
-
 interface Event {
   id: number;
   title: string;
@@ -42,19 +40,6 @@ const events: Event[] = [
 export default function Evenements() {
   return (
     <>
-      <NextSeo
-        title="Orchestre Universitaire de Metz - Une aventure musicale étudiante"
-        description="Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !"
-        canonical="https://www.orchestre-universitaire-metz.fr/evenements"
-        openGraph={{
-          type: "website",
-          url: "https://www.orchestre-universitaire-metz.fr/evenements",
-          title:
-            "Orchestre Universitaire de Metz - Une aventure musicale étudiante",
-          description:
-            "Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !",
-        }}
-      />
       <section className="space-y-8 flex flex-col items-center py-16">
         <h2 className="text-xl xl:text-3xl font-light text-[#B56D3E]">
           Prochains Évenements

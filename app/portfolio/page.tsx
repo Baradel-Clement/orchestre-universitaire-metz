@@ -16,7 +16,6 @@ import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import { NextSeo } from "next-seo";
 
 const photos = [
   { src: "/assets/portfolio/1.jpg", width: 1200, height: 1599 },
@@ -84,7 +83,7 @@ export default function Portfolio() {
   const [index, setIndex] = useState(-1);
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title="Orchestre Universitaire de Metz - Une aventure musicale étudiante"
         description="Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !"
         canonical="https://www.orchestre-universitaire-metz.fr/portfolio"
@@ -96,7 +95,7 @@ export default function Portfolio() {
           description:
             "Rejoignez l'Orchestre Universitaire de Metz ! Une expérience musicale unique pour les étudiants et passionnés, mêlant convivialité et excellence. Partagez la musique, vibrez ensemble !",
         }}
-      />
+      /> */}
       <section className="Portfolio">
         <RowsPhotoAlbum
           photos={photos}
