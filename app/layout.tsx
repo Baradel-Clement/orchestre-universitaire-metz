@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.orchestre-universitaire-metz.fr",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        {/* Lien vers le favicon */}
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <Navigation />
         {children}

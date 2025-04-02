@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.orchestre-universitaire-metz.fr/contact",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function ContactLayout({
